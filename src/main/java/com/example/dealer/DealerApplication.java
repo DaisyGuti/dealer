@@ -6,9 +6,14 @@ import org.beryx.textio.TextIoFactory;
 public class DealerApplication {
 
     private TextIO textIO;
+    private Deck deck;
+    private Card currentCard;
+    private Card nextCard;
+    private boolean dealCard;
 
     public DealerApplication(TextIO textIO) {
         this.textIO = textIO;
+        this.deck = new Deck();
     }
 
     public static void main(String[] args) {
@@ -36,15 +41,9 @@ public class DealerApplication {
     }
 
     /**
-     * Lets the user play one game of HighLow, and returns the
-     * user's score in that game.  The score is the number of
-     * correct guesses that the user makes.
+     * Lets the user deal cards one by one.
      */
     public void play() {
-        Deck deck = new Deck();
-        Card currentCard;
-        Card nextCard;
-        boolean dealCard;
         deck.shuffle();
         currentCard = deck.dealCard();
 
@@ -68,5 +67,36 @@ public class DealerApplication {
             System.out.println("The card is " + currentCard);
         } // end of while loop
 
+        System.out.println();
+        System.out.println("No more cards.");
+
     }  // end play()
+
+    public TextIO getTextIO() {
+        return textIO;
+    }
+
+    public void setTextIO(TextIO textIO) {
+        this.textIO = textIO;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public Card getCurrentCard() {
+        return currentCard;
+    }
+
+    public Card getNextCard() {
+        return nextCard;
+    }
+
+    public boolean isDealCard() {
+        return dealCard;
+    }
+
+    public void setDealCard(boolean dealCard) {
+        this.dealCard = dealCard;
+    }
 }
