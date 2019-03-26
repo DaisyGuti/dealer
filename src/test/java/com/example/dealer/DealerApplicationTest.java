@@ -22,24 +22,28 @@ public class DealerApplicationTest {
         Card nextCard;
         boolean dealCard;
 
-        for (int i = 0; i < 53 ; i++) {
-            //Shuffle first
-            deck.shuffle();
-            currentCard = deck.dealCard();
+        //Shuffle first, deal one card
+        deck.shuffle();
+        currentCard = deck.dealCard();
+
+        for (int i = 0; i < 54 ; i++) {
 
             while (deck.cardsLeft() != 0) {  // Loop ends when the user says N or there are no more cards
+                //System.out.println(deck.cardsLeft());
                 /* Get the next card and show it to the user. */
                 nextCard = deck.dealCard();
                  /* The nextCard becomes the currentCard, since the currentCard has to be
                     the card that the user sees, and the nextCard will be
                     set to the next card in the deck  */
                 currentCard = nextCard;
+
             } // end of while loop
 
             if(i == 53){
                 assertTrue(deck.cardsLeft() == 0);
             }
         }//end for loop
+        assertTrue(deck.cardsLeft() == 0);
     }
 
 }
