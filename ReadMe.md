@@ -15,4 +15,4 @@ The test report is located here: build/reports/tests/test/index.html
 
 To run the application (for directory root prefix with build/libs):
 
-$ java -jar dealer-0.0.1-SNAPSHOT.jar
+$ java -jar dealer-all-0.0.1-SNAPSHOT.jar

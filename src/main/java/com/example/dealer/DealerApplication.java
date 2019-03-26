@@ -35,7 +35,7 @@ public class DealerApplication {
 	}
 
 	private boolean playAgain(){
-        return !textIO.newBooleanInputReader()
+        return textIO.newBooleanInputReader()
                 .withPropertiesPrefix("exit")
                 .withDefaultValue(true).read("Play again?");
     }

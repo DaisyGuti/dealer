@@ -1,5 +1,5 @@
 plugins {
-	id 'org.asciidoctor.convert' version '1.5.3'
+    id 'org.asciidoctor.convert' version '1.5.3'
 	id 'java'
     id 'idea'
 }
@@ -15,6 +15,26 @@ repositories {
 dependencies {
     compile 'org.beryx:text-io:3.3.0'
     compile 'junit:junit:4.12'
+    runtime 'org.beryx:text-io:3.3.0'
+}
+
+//jar {
+//    manifest {
+//        attributes 'Main-Class': 'com.example.dealer.DealerApplication'
+//    }
+//}
+//
+jar.dependsOn 'fatJar'
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Dealer App Example',
+                'Implementation-Version': version,
+                'Main-Class': 'com.example.dealer.DealerApplication'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 
